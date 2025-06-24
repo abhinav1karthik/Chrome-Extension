@@ -1,5 +1,5 @@
 const bookmarkImgURL = chrome.runtime.getURL("assets/bookmark.png");
-
+const AZ_PROBLEM_KEY = "AZ_PROBLEM_KEY";
 window.addEventListener("load", addBookmarkButton);
 
 function addBookmarkButton() {
@@ -18,4 +18,7 @@ function addBookmarkButton() {
   } else {
     console.warn("Bookmark container not found");
   }
+  bookmarkButton.addEventListener("click", () => {
+    alert("bookmark successful");
+  });
 }
