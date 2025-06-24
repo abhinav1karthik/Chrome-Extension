@@ -1,6 +1,6 @@
 # AZ Problem Tracker - Chrome Extension
 
-**AZ Problem Tracker** is a Chrome extension that allows users to bookmark and manage coding problems from the [maang.in](https://maang.in) website. This project was built as part of a hands-on course on Chrome Extension Development.
+**AZ Problem Tracker** is a Chrome extension that allows users to bookmark and manage coding problems from the [maang.in](https://maang.in) website.
 
 ## ✨ Features
 
