@@ -3,7 +3,23 @@ const AZ_PROBLEM_KEY = "AZ_PROBLEM_KEY";
 
 window.addEventListener("load", addBookmarkButton);
 
+const observer = new MutationObserver(() => {
+  addBookmarkButton();
+});
+
+observer.observe(document.body, { childList: true, subtree: true });
+
+addBookmarkButton();
+
+function onProblemsPage() {
+  return window.location.pathname.startsWith("/problems/");
+}
+
 function addBookmarkButton() {
+  console.log("triggering");
+  if (!onProblemsPage() || document.getElementById("add-bookmark-button"))
+    return;
+
   const bookmarkButton = document.createElement("img");
   bookmarkButton.id = "add-bookmark-button";
   bookmarkButton.src = bookmarkImgURL;
