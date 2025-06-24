@@ -1,5 +1,6 @@
 const bookmarkImgURL = chrome.runtime.getURL("assets/bookmark.png");
 const AZ_PROBLEM_KEY = "AZ_PROBLEM_KEY";
+
 window.addEventListener("load", addBookmarkButton);
 
 function addBookmarkButton() {
@@ -18,7 +19,44 @@ function addBookmarkButton() {
   } else {
     console.warn("Bookmark container not found");
   }
-  bookmarkButton.addEventListener("click", () => {
-    alert("bookmark successful");
+  bookmarkButton.addEventListener("click", addNewBookmarkHandler);
+}
+
+async function addNewBookmarkHandler() {
+  const currentBookmarks = await getCurrentBookmarks();
+  const azProblemUrl = window.location.href;
+  const uniqueId = extractUniqueId(azProblemUrl);
+  const problemName = document.getElementsByClassName(
+    "Header_resource_heading__cpRp1"
+  )[0].innerText;
+
+  if (currentBookmarks.some((bookmark) => bookmark.id == uniqueId)) return;
+
+  const bookmarkObj = {
+    id: uniqueId,
+    name: problemName,
+    url: azProblemUrl,
+  };
+
+  const updatedBookmarks = [...currentBookmarks, bookmarkObj];
+
+  chrome.storage.sync.set({ AZ_PROBLEM_KEY: updatedBookmarks }, () => {
+    console.log("updated the bookmarks correctly to ", updatedBookmarks);
+  });
+}
+
+function extractUniqueId(url) {
+  const pathParts = new URL(url).pathname.split("/");
+  const problemId = pathParts.find(
+    (part) => part !== "" && part !== "problems"
+  );
+  return problemId || null;
+}
+
+function getCurrentBookmarks() {
+  return new Promise((resolve, reject) => {
+    chrome.storage.sync.get([AZ_PROBLEM_KEY], (results) => {
+      resolve(results[AZ_PROBLEM_KEY] || []);
+    });
   });
 }
