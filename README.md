@@ -1,41 +1,31 @@
-# Chrome-Extension-Base-Template
-This is a basic Chrome Extension base template for starting new projects off of initialized with a MIT license.
+# AZ Problem Tracker - Chrome Extension
 
-## Features
-- ..
-- ..
-- ..
+**AZ Problem Tracker** is a Chrome extension that allows users to bookmark and manage coding problems from the [maang.in](https://maang.in) website. This project was built as part of a hands-on course on Chrome Extension Development.
 
-## Author
-First Last
-- [Author Website]()
-- [Author Github]()
-- [Project Repository]()
+## ✨ Features
 
-## Requirements
-### Knowledge
-- HTML
-- CSS
-- Javascript
-- Chrome API
-### Tools
-- Google Chrome Browser
-- IDE or Text Editor of Your Choice
+- 🔖 Bookmark problems for later review
+- 📚 View and manage all your bookmarked problems from the popup
+- 🌐 Automatically integrates with maang.in problem pages
 
-## Setup Instructions
-### For Developers
-1. Make a clone of this project, unzipped.
-2. Open Chrome Browser
-3. In a new or blank tab, type in "chrome://extensions/" (without the quotes of course) and click [Enter].
-4. At the top right corner of the page, **enable** "Developer Mode"
-5. Click the button on the page that says "Load Unpacked"
-6. Navigate to your unzipped project folder and select that and hit OK.
-7. You are now ready to start working on the extension! Just make sure you reload after each change you make to see the changes take place.
+## 📁 Project Structure
 
-### For End Users
-1. ...
-2. ...
-3. ...
+- `manifest.json` – Chrome extension configuration
+- `popup.html`, `popup.js`, `popup.css` – Extension popup UI and logic
+- `content.js` – Content script to interact with maang.in
+- `assets/` – Icons for play and delete actions
 
-## License
-Please refer to LICENSE file.
+## 🚀 Getting Started
+
+### Prerequisites
+
+- Google Chrome browser
+- Basic knowledge of HTML, CSS, and JavaScript
+
+### Installation
+
+1. Clone this repository:
+   ```bash
+   git clone https://github.com/your-username/az-problem-tracker.git
+   cd az-problem-tracker
+   ```
